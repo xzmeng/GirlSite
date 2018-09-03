@@ -9,8 +9,19 @@ resource_dir = 'static/mm131.com'
 
 @app.route('/')
 def index():
-    girl_list = os.listdir(resource_dir)
-    return render_template('index.html', girl_list=girl_list)
+    girl_titles = os.listdir(resource_dir)
+    girl_paths = map(lambda x: os.path.join(resource_dir, x), girl_titles)
+
+    def get_thumb(girl_path):
+        pics = os.listdir(girl_path)
+        if pics:
+            return os.path.join(girl_path, pics[0])
+        else:
+            return 'static/notfound.png'
+
+    thumbs = map(get_thumb, girl_paths)
+    items = zip(girl_titles, thumbs)  # 列表元素为(女孩标题,缩略图)
+    return render_template('index.html', items=items)
 
 
 @app.route('/girl/<title>')

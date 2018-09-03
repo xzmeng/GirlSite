@@ -8,8 +8,12 @@
 <body>
     <h1><i>美图列表</i></h1>
     <ul>
-        {% for girl_title in girl_list %}
-        <li><a href="/girl/{{ girl_title }}">{{ girl_title }}</a></li>
+        {% for item in items %}
+        <li>
+            <a href="/girl/{{ item[0] }}">{{ item[0] }}</a><br>
+            <img src="{{ item[1] }}" width="400">
+            <br>
+        </li>
         {% endfor %}
     </ul>
 </body>
