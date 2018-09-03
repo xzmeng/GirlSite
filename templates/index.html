@@ -2,9 +2,15 @@
 <html lang="zh_CN">
 <head>
     <meta charset="UTF-8">
-    <title>美女图片</title>
+    <title>美女图片v0.1</title>
+    <link rel="icon" href="static/favicon.icon">
 </head>
 <body>
-    <h1>美女图片v0.1</h1>
+    <h1><i>美图列表</i></h1>
+    <ul>
+        {% for girl_title in girl_list %}
+        <li><a href="/girl/{{ girl_title }}">{{ girl_title }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

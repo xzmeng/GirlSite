@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GirlSite - {{ title }}</title>
+    <link rel="icon" href="static/favicon.icon">
+</head>
+<body>
+    <h2><i>{{ title }}</i></h2>
+    <ul>
+        {% for pic_path in pic_path_list %}
+        <li>
+            <img src="{{ '/' + pic_path }}">
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
