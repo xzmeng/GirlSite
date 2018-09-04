@@ -11,10 +11,29 @@
         {% for item in items %}
         <li>
             <a href="/girl/{{ item[0] }}">{{ item[0] }}</a><br>
-            <img src="{{ item[1] }}" width="400">
+            <img src="{{ '/' + item[1] }}" width="400">
             <br>
         </li>
         {% endfor %}
     </ul>
+
+    {% if page_bar.mode == page_bar.RIGHT or page_bar.mode == page_bar.MIDDLE %}
+    <a href="/page/1">1</a>...
+    {% endif %}
+
+    {% for i in range(page_bar.left, page_bar.right + 1) %}
+    <a href="/page/{{ i }}">
+        {% if page_bar.page_num == i %}
+        <b>{{ i }}</b>
+        {% else %}
+        {{ i }}
+        {% endif %}
+    </a>
+    {% endfor %}
+
+    {% if page_bar.mode == page_bar.LEFT or page_bar.mode == page_bar.MIDDLE %}
+    ...<a href="/page/{{ page_bar.page_total }}">{{ page_bar.page_total }}</a>
+    {% endif %}
+
 </body>
 </html>
