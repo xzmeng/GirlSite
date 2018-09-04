@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template
-import os
 from tools import PageBar
 
 app = Flask(__name__)
@@ -11,18 +10,7 @@ PAGE_ITEM_COUNT = 20
 
 @app.route('/')
 def index():
-    girl_titles = os.listdir(resource_dir)
-    girl_paths = map(lambda x: os.path.join(resource_dir, x), girl_titles)
-
-    def get_thumb(girl_path):
-        pics = os.listdir(girl_path)
-        if pics:
-            return os.path.join(girl_path, pics[0])
-        else:
-            return 'static/notfound.png'
-    thumbs = map(get_thumb, girl_paths)
-    items = zip(girl_titles, thumbs)  # 列表元素为(女孩标题,缩略图)
-    return render_template('index.html', items=items)
+    return index_page(1)
 
 
 @app.route('/page/<int:page_num>')
